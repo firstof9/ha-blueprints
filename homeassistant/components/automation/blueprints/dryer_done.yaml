@@ -17,6 +17,8 @@ blueprint:
           entity:
             domain: script
 
+max_exceeded: silent
+
   trigger:
     platform: state
     entity_id: !input dryer_entity
