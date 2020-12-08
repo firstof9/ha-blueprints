@@ -5,11 +5,10 @@ blueprint:
   source_url: https://github.com/firstof9/ha-blueprints/blob/homeassistant/components/automation/blueprints/motion_light.yaml
   input:
     dryer_entity:
-      name: Dryer
+      name: Dryer Sensor
       selector:
         entity:
           domain: binary_sensor
-
     notification_service:
       name: Notification Service
       selector:
