@@ -19,13 +19,13 @@ blueprint:
 
 max_exceeded: silent
 
-  trigger:
-    platform: state
-    entity_id: !input dryer_entity
-    from: "on"
-    to: "off"
+trigger:
+  platform: state
+  entity_id: !input dryer_entity
+  from: "on"
+  to: "off"
 
-  action:
-    - service: !input notification_service
-      data:
-        message: "Dryer cycle complete."
+action:
+  - service: !input notification_service
+    data:
+      message: "Dryer cycle complete."
