@@ -15,7 +15,6 @@ blueprint:
       selector:
         number:
           min: 0
-          max: 9999999
           unit_of_measurement: watts
 
     notification_service:
