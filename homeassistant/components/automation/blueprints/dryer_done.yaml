@@ -26,5 +26,4 @@ trigger:
 
 action:
   - service: !input notification_service
-    data:
-      message: "Dryer cycle complete."
+    message: "Dryer cycle complete."
