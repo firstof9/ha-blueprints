@@ -1,8 +1,7 @@
 blueprint:
-  name: Notifiy Dryer Complete
+  name: Notify Dryer Complete (Binary Sensor)
   description: Send notification when the dryer cycle has completed
   domain: automation
-  source_url: https://github.com/firstof9/ha-blueprints/blob/homeassistant/components/automation/blueprints/dryer_done.yaml
   input:
     dryer_entity:
       name: Dryer Sensor
