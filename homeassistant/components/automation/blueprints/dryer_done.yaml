@@ -1,0 +1,29 @@
+blueprint:
+  name: Notifiy Dryer Complete
+  description: Send notification when the dryer cycle has completed
+  domain: automation
+  source_url: https://github.com/firstof9/ha-blueprints/blob/homeassistant/components/automation/blueprints/motion_light.yaml
+  input:
+    dryer_entity:
+      name: Dryer
+      selector:
+        entity:
+          domain: binary_sensor
+
+    notification_service:
+      name: Notification Service
+      selector:
+        target:
+          entity:
+            domain: script
+
+  trigger:
+    platform: state
+    entity_id: !input dryer_entity
+    from: "on"
+    to: "off"
+
+  action:
+    - service: !input notification_service
+      data:
+        message: "Dryer cycle complete."
