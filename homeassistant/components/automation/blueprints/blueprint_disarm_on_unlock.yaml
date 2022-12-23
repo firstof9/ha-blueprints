@@ -24,6 +24,12 @@ blueprint:
       description: Your alarm panel.
       selector:
         entity:
+    alarm_pin:
+      name: Alarm PIN
+      description: Alarm panel PIN to change states.
+      default: "!secret alarm_pin"
+      selector:
+        text:        
 
 trigger:
   platform: state
@@ -31,5 +37,7 @@ trigger:
   to: "unlocked"
 
 action:
-  service: !input alarm_panel_arm_away
+  service: !input alarm_panel_disarm
   target: !input alarm_panel_controller
+  data:
+    pin: !input alarm_pin
