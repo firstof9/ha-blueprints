@@ -1,0 +1,35 @@
+blueprint:
+  name: Alarm System - Auto Arm Away
+  description: Automatically arm your alarm system when every one is away.
+  domain: automation
+  source_url: https://github.com/firstof9/ha-blueprints/blob/main/homeassistant/components/automation/blueprints/blueprint_auto_arm_away.yaml
+  input:
+    home_zone:
+      name: Home Zone
+      description: "Your home zone"
+      default: "zone.home"
+      selector:
+        entity:
+          domain: zone
+    alarm_panel_arm_away:
+      name: Arm away service
+      description: >
+        Alarm panel "arm away" service.\n
+        An example would be "alarm_control_panel.alarm_arm_away" for the manual alarm control panel integration.
+      default: "alarm_control_panel.alarm_arm_away"
+      selector:
+        text:
+    alarm_panel_controller:
+      name: Alarm Panel
+      description: Your alarm panel.
+      selector:
+        entity:
+
+trigger:
+  platform: numeric_state
+  entity_id: !input home_zone
+  below: 1
+
+action:
+  service: !input alarm_panel_arm_away
+  target: !input alarm_panel_controller
