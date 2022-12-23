@@ -1,0 +1,35 @@
+blueprint:
+  name: Alarm System - Disarm on unlock
+  description: Automatically disarm your alarm system when lock(s) are unlocked.
+  domain: automation
+  source_url: https://github.com/firstof9/ha-blueprints/blob/main/homeassistant/components/automation/blueprints/blueprint_disarm_on_unlock.yaml
+  input:
+    locks:
+      name: Locks
+      description: "Door locks"
+      selector:
+        entity:
+          domain: lock
+          multiple: true
+    alarm_panel_disarm:
+      name: Disarm service
+      description: >
+        Alarm panel "disarm" service.\n
+        An example would be "alarm_control_panel.alarm_disarm" for the manual alarm control panel integration.
+      default: "alarm_control_panel.alarm_disarm"
+      selector:
+        text:
+    alarm_panel_controller:
+      name: Alarm Panel
+      description: Your alarm panel.
+      selector:
+        entity:
+
+trigger:
+  platform: state
+  entity_id: !input locks
+  to: "unlocked"
+
+action:
+  service: !input alarm_panel_arm_away
+  target: !input alarm_panel_controller
